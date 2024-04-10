@@ -42,7 +42,7 @@ class RealEstateDataFetcher:
             self.driver.find_element(By.ID, "cphNoMargin_SearchButtons2_btnSearch").click()
             num_rows = self.get_number_of_rows()
             if num_rows == 0:
-                return [], []
+                return [], [], []
             return self.extract_grantor_grantee_data(num_rows)
         except Exception as e:
             logging.error(f"An error occurred while processing {addy}: {e}")
@@ -81,17 +81,25 @@ class RealEstateDataFetcher:
     def generate_grantor_grantee_csv(input_file_path, output_file_path):
         """Generates a CSV file with grantor and grantee data for a list of addresses."""
         df = pd.read_csv(input_file_path)
-        df['Grantors'], df['Grantees'] = None, None
-        for i, address in df.iterrows():
+        # Create an empty DataFrame with the necessary columns
+        expanded_df = pd.DataFrame(columns=['Address', 'Grantor', 'Grantee', 'Date'])
+
+        for i, row in df.iterrows():
             fetcher = RealEstateDataFetcher()
-            grantors, grantees = fetcher.get_rows(address['Address'])
-            if grantors is not None and grantees is not None:
-                df.at[i, 'Grantors'], df.at[i, 'Grantees'] = grantors, grantees
+            address = row['Address']
+            grantors, grantees, dates = fetcher.get_rows(address)
         
-        # Filter out rows where either 'Grantors' or 'Grantees' is None or an empty list
-        df = df[df.apply(lambda row: row['Grantors'] not in (None, []) and row['Grantees'] not in (None, []), axis=1)]
-        df.to_csv(output_file_path, columns=['Address', 'Grantors', 'Grantees'], index=False)
+            # Iterate through each grantor, grantee, and date, adding each as a new row
+            for grantor, grantee, date in zip(grantors, grantees, dates):
+                new_row = {'Address': address, 'Grantor': grantor, 'Grantee': grantee, 'Date': date}
+                expanded_df = expanded_df.append(new_row, ignore_index=True)
+    
+        # Filter out any rows that didn't get data (if any)
+        expanded_df.dropna(subset=['Grantor', 'Grantee', 'Date'], inplace=True)
+
+        # Save the expanded DataFrame to CSV
+        expanded_df.to_csv(output_file_path, index=False)
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-    RealEstateDataFetcher.generate_grantor_grantee_csv(input_file_path="Data/test_input.csv", output_file_path="Data/test_output.csv")
+    RealEstateDataFetcher.generate_grantor_grantee_csv(input_file_path="Real_Estate_Data/Data/test_input.csv", output_file_path="Real_Estate_Data/Data/test_output.csv")
