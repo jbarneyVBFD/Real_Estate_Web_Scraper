@@ -90,4 +90,4 @@ class RealEstateDataFetcher:
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-    RealEstateDataFetcher.generate_grantor_grantee_csv(input_file_path="test_addresses.csv", output_file_path="addresses_test.csv")
+    RealEstateDataFetcher.generate_grantor_grantee_csv(input_file_path="Data/test_input.csv", output_file_path="Data/test_output.csv")
