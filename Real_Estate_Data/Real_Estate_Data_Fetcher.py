@@ -25,7 +25,7 @@ class RealEstateDataFetcher:
         driver = webdriver.Chrome(service=s, options=chrome_options)
         return driver
 
-    def get_rows(self, addy, date_range=None):
+    def get_rows(self, addy):
         """Fetches rows of grantor and grantee data for a given address."""
         try:
             url = 'https://www.tccsearch.org/RealEstate/SearchEntry.aspx#close'
@@ -39,8 +39,6 @@ class RealEstateDataFetcher:
             checkbox = self.driver.find_element(By.NAME, "ctl00$cphNoMargin$f$dclDocType$42")
             if not checkbox.is_selected():
                 checkbox.click()
-            if date_range is not None:
-                pass
             self.driver.find_element(By.ID, "cphNoMargin_SearchButtons2_btnSearch").click()
             num_rows = self.get_number_of_rows()
             if num_rows == 0:
