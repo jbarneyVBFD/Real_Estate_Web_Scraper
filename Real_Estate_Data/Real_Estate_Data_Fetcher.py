@@ -70,8 +70,7 @@ class RealEstateDataFetcher:
             if (i + 1) % 20 == 0 and i + 1 < num_rows:
                 self.navigate_to_next_page()
         return grantors, grantees, dates
-# //*[@id="ctl00_ctl00_cphNoMargin_cphNoMargin_g_G1_ctl00"]/table/tbody/tr[2]/td/table/tbody[2]/tr/td/div[2]/table/tbody/tr[2]/td[9]
-# //*[@id="ctl00_ctl00_cphNoMargin_cphNoMargin_g_G1_ctl00"]/table/tbody/tr[2]/td/table/tbody[2]/tr/td/div[2]/table/tbody/tr[3]/td[9]
+
     def navigate_to_next_page(self):
         """Navigates to the next page of the search results if applicable."""
         next_page_button = self.driver.find_element(By.ID, "OptionsBar2_imgNext") 
