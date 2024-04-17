@@ -1,5 +1,3 @@
-import logging
-import argparse
 import tkinter as tk
 from tkinter import filedialog
 
@@ -20,12 +18,3 @@ def get_file_paths():
         defaultextension=".csv")
 
     return input_file_path, output_file_path
-
-
-if __name__ == "__main__":
-    input_path, output_path = get_file_paths()
-    if not input_path or not output_path:
-        print("Operation cancelled by the user.")
-    else:
-        logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-        RealEstateDataFetcher.generate_grantor_grantee_csv(input_file_path=input_path, output_file_path=output_path)
