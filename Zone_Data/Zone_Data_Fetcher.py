@@ -43,14 +43,14 @@ class ZoneDataFetcher:
 
 
 # Example usage
-if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO)
-    commercial_endpoint = 'https://data.austintexas.gov/resource/nbzi-qabm.json?$query=SELECT%20%60full_street_name%60%2C%20%60base_zone_category%60%0AWHERE%0A%20%20%60base_zone_category%60%20IN%20(%0A%20%20%20%20%22%22%2C%20... <remaining query>'
+# if __name__ == "__main__":
+#     logging.basicConfig(level=logging.INFO)
+#     commercial_endpoint = 'https://data.austintexas.gov/resource/nbzi-qabm.json?$query=SELECT%20%60full_street_name%60%2C%20%60base_zone_category%60%0AWHERE%0A%20%20%60base_zone_category%60%20IN%20(%0A%20%20%20%20%22%22%2C%20... <remaining query>'
 
-    fetcher = ZoneDataFetcher(commercial_endpoint)
-    addresses, zones = fetcher.get_addresses()
+#     fetcher = ZoneDataFetcher(commercial_endpoint)
+#     addresses, zones = fetcher.get_addresses()
     
-    if addresses is not None and zones is not None:
-        fetcher.save_addresses_zones_to_csv(addresses, zones, "commercial_zoned_addresses.csv")
-    else:
-        logging.error("Failed to fetch addresses and zones.")
+#     if addresses is not None and zones is not None:
+#         fetcher.save_addresses_zones_to_csv(addresses, zones, "commercial_zoned_addresses.csv")
+#     else:
+#         logging.error("Failed to fetch addresses and zones.")

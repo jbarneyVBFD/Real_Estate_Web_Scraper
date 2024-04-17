@@ -1,9 +1,9 @@
 import logging
-from Form import get_file_paths
+from Form import form
 from Real_Estate_Data import RealEstateDataFetcher
 
 if __name__ == "__main__":
-    input_path, output_path = get_file_paths()
+    input_path, output_path = form.get_file_paths()
     if not input_path or not output_path:
         print("Operation cancelled by the user.")
     else:

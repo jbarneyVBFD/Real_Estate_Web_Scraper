@@ -91,14 +91,11 @@ class RealEstateDataFetcher:
             # Iterate through each grantor, grantee, and date, adding each as a new row
             for grantor, grantee, date in zip(grantors, grantees, dates):
                 new_row = {'Address': address, 'Grantor': grantor, 'Grantee': grantee, 'Date': date}
-                expanded_df = expanded_df.append(new_row, ignore_index=True)
+                new_row_df = pd.DataFrame([new_row])  # Convert the dictionary to a DataFrame
+                expanded_df = pd.concat([expanded_df, new_row_df], ignore_index=True)
     
         # Filter out any rows that didn't get data (if any)
         expanded_df.dropna(subset=['Grantor', 'Grantee', 'Date'], inplace=True)
 
         # Save the expanded DataFrame to CSV
         expanded_df.to_csv(output_file_path, index=False)
-
-if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-    RealEstateDataFetcher.generate_grantor_grantee_csv(input_file_path="Real_Estate_Data/Data/test_input.csv", output_file_path="Real_Estate_Data/Data/test_output.csv")
