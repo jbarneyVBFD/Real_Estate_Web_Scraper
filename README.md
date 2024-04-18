@@ -1,7 +1,7 @@
-# Real Estate Data Scraper - README
+# Real Estate Web Scraper - README
 
 ## Overview
-The Real Estate Data Scraper is a Python-based tool designed to scrape grantor and grantee information, along with the date of each deed of trust, from a specified real estate website. This tool takes a list of addresses from a provided CSV file and outputs another CSV file containing detailed transaction information for each address. This is particularly useful for users needing detailed property transaction records for legal, business, or research purposes.
+The Real Estate Web Scraper is a Python-based tool designed to scrape grantor and grantee information, along with the date of each deed of trust, from a specified real estate website. This tool takes a list of addresses from a provided CSV file and outputs another CSV file containing detailed transaction information for each address. This is particularly useful for users needing detailed property transaction records for legal, business, or research purposes.
 
 ## Prerequisites
 To use this scraper, you will need:
