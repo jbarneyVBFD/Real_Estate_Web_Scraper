@@ -12,17 +12,23 @@ To use this scraper, you will need:
 
 ## Installation
 1. **Clone the repository:**
-```git clone https://github.com/jbarneyVBFD/Real_Estate_Web_Scraper.git
-cd Real_Estate_Web_Scraper```
+```
+git clone https://github.com/jbarneyVBFD/Real_Estate_Web_Scraper.git
+cd Real_Estate_Web_Scraper
+```
 
 
 2. **Set up a virtual environment (optional but recommended):**
-```python -m venv venv
-source venv/bin/activate # On Windows use venv\Scripts\activate```
+```
+python -m venv venv
+source venv/bin/activate # On Windows use venv\Scripts\activate
+```
 
 
 3. **Install the required Python packages:**
-```pip install -r requirements.txt```
+```
+pip install -r requirements.txt
+```
 
 
 4. **ChromeDriver Setup:**
@@ -31,15 +37,19 @@ source venv/bin/activate # On Windows use venv\Scripts\activate```
 
 ## Input File Format
 Prepare a CSV file containing the addresses for which you want to fetch data. The CSV file must have a header named `Address`. Example of the input CSV format:
-```Address
+```
+Address
 123 Example St
 456 Another Ln
-789 Sample Blvd```
+789 Sample Blvd
+```
 
 
 ## Usage
 1. **Run the scraper:**
-```python main.py```
+```
+python main.py
+```
 
 When prompted, enter the path to your input CSV file and specify the desired path for the output CSV file.
 
@@ -55,9 +65,11 @@ The output CSV file will contain the following columns:
 - `Date`: The date on which the deed of trust was recorded.
 
 ## Example Output
-```Address,Grantor,Grantee,Date
+```
+Address,Grantor,Grantee,Date
 123 Example St,John Doe,Jane Smith,01/01/2020
-456 Another Ln,Alice Johnson,Bob Lee,02/02/2021```
+456 Another Ln,Alice Johnson,Bob Lee,02/02/2021
+```
 
 
 ## Troubleshooting
