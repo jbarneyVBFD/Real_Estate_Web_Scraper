@@ -51,7 +51,7 @@ Address
 python main.py
 ```
 
-When prompted, enter the path to your input CSV file and specify the desired path for the output CSV file.
+When prompted, a window will appear allowing you to select the input CSV file containing addresses and specify the desired location for the output CSV file.
 
 2. **Input and Output:**
 - **Input:** Path to the CSV file containing addresses.
